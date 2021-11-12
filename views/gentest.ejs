@@ -1,0 +1,162 @@
+<%-include("partials/extras/header")%>   
+    <script>
+        var p1 = 0;
+        var agePat = 50;
+        function agechange(){
+            const age= document.getElementById('age').value;
+            console.log(age);
+            document.getElementById('age1').innerHTML = age;
+
+            age1 = document.getElementById('age1');
+            p2 = (0.68*age)+16;
+            p3 = p2.toString()+"vh";
+            age1.style.paddingLeft = p3;
+
+        }
+        // agechange();
+        function next(){
+            p1=p1+1;
+            a = 'p'+p1.toString();
+            for(var i=1;i<=2;++i){
+                b = 'p'+ i.toString();
+                var x = document.getElementById(b);
+                x.style.display = 'none';
+            }
+            var x = document.getElementById(a);
+            x.style.display = 'block';
+        }
+        next();
+    </script>
+    <style>
+        .symp{
+            border: 1px solid rgb(146, 146, 248);
+            padding: 1px 10px 1px 10px;
+            border-radius: 10px;
+            background-color: rgb(136, 169, 201);
+            /* margin-bottom: 100px; */
+            margin: 10px;
+        }   
+        .symp:hover{
+            background-color: rgb(248, 130, 130);
+        }
+        .hgt{
+            border-left: 3px solid black;
+            height: 30px;
+            padding-left: 20px;
+            color: #adb5bd;
+        }
+        .hg1{
+            /* border-left: 3px solid green; */
+            height: 30px;
+            padding-left: 23px;
+            position: relative;
+        }
+        .hg1::after{
+            padding-left: 25px;
+            content: '';
+            position: absolute;
+            left: 0px;
+            bottom: 10%;
+            height: 100%;
+            border-left: 3px solid #1576d1;
+        }
+        .hg2{
+            border-left: 3px solid #1576d1;
+            height: 30px;
+            padding-left: 20px;
+            color: #adb5bd;
+        }
+    </style>
+</head>
+
+<body style="background-color: #eee;">
+    <%-include("partials/extras/nav")%> 
+    
+    
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-1" style="border: 0px solid black; margin: 0px auto 0px auto;"></div>
+            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;">
+                <div style="margin-top:50px;">
+                    <div>
+                        <div class="hg2">
+                            <strong>Personal Details</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>Gender</strong>
+                        </div>
+                        <div class="hg1">
+                            <strong>General Test</strong>
+                        </div>
+                        <div class="hgt">
+                            <strong>BMI data</strong>
+                        </div>
+                        <div class="hgt">
+                            <strong>Temperature</strong>
+                        </div>
+                        <div class="hgt">
+                            <strong>Miscellaneous</strong>
+                        </div>
+                        <div class="hgt">
+                            <strong>Symptoms Check</strong>
+                        </div>
+                        <div class="hgt">
+                            <strong>Results</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7"style="border-radius:10px; margin: 50px auto; background-color: white; width: 40%; height: 80vh;" id="p1">
+                <div style="margin: 12vh 5vh 0 5vh;">
+                <form action="/hw" method="post">
+                    <h3 style="margin-bottom:30px;">General Test</h3>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Systolic BP</span>
+                        <input type="text" name="ubp" class="form-control" placeholder="Upper BP in mmHg (Default - 80)" aria-label="Upper BP" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Diastolic BP</span>
+                        <input type="text" name="lbp" class="form-control" placeholder="Lower BP in mmHg (Default - 120)" aria-label="Username" aria-describedby="basic-addon1">
+                        <hr>
+                    </div>
+                
+                    <div>
+                        <p style="float: left; padding-right: 20px;">How is your Cholesterol level</p> 
+                        <div class="btn-toolbar" role="toolbar" style="font-size: 13px;" aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2" role="group" aria-label="First group" >
+                              <input type="radio" name="Cholesterol"  value="norm" style="margin-top: 4px;" required checked>&#160Normal&#160&#160&#160&#160
+                              <input type="radio" name="Cholesterol"  value="abvnor" style="margin-top: 4px;" required>&#160Above Normal&#160&#160&#160&#160
+                              <input type="radio" name="Cholesterol"  value="welabvnor" style="margin-top: 4px;" required>&#160Well Above Normal&#160&#160&#160&#160
+                            </div>
+                            <hr style="width: 100%;">
+                            
+                        </div>
+                          <div>
+                            <p style="float: left; padding-right: 20px;">How your Glucose Level</p>
+                            <div class="btn-toolbar" role="toolbar" style="font-size: 13px;" aria-label="Toolbar with button groups">
+                                <div class="btn-group me-2" role="group" aria-label="First group" style="margin-left: 6.5vh;">
+                                  <input type="radio" name="Glucose" value="norm" style="margin-top: 4px;" required checked>&#160Normal&#160&#160&#160&#160
+                                  <input type="radio" name="Glucose" value="abvnor" style="margin-top: 4px;" required>&#160Above Normal&#160&#160&#160&#160
+                                  <input type="radio" name="Glucose" value="welabvnor" style="margin-top: 4px;" required>&#160Well Above Normal&#160&#160&#160&#160
+                                </div>
+                                <hr style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+
+                
+                    <button class="btn" style=" background-color: #1576d1; color: white; margin-left: 40%;width: 10%;">Next</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-md-2" style="border: 0px solid black; margin: 50px auto;"></div>
+        </div>
+      </div>
+</body>
+
+</html>
+
+
+<!-- ackj nadkjbdakjbdakbdakb ============================================================================================ -->
+

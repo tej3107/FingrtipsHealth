@@ -1,0 +1,318 @@
+<%-include("partials/extras/header")%>
+    <script>
+        // #cf3232
+        // #bf1128
+    </script>
+    <style>
+        .symp{
+            border: 1px solid rgb(146, 146, 248);
+            padding: 1px 10px 1px 10px;
+            border-radius: 10px;
+            background-color: rgb(136, 169, 201);
+            margin: 10px;
+        }
+        .symp:hover{
+            background-color: rgb(248, 130, 130);
+        }
+        .hgt{
+            border-left: 3px solid black;
+            height: 30px;
+            padding-left: 20px;
+            color: #adb5bd;
+        }
+        .hg1{
+            /* border-left: 3px solid green; */
+            height: 30px;
+            padding-left: 23px;
+            position: relative;
+        }
+        .hg1::after{
+            padding-left: 25px;
+            content: '';
+            position: absolute;
+            left: 0px;
+            bottom: 10%;
+            height: 100%;
+            border-left: 3px solid #1576d1;
+        }
+        .hg2{
+            border-left: 3px solid #1576d1;
+            height: 30px;
+            padding-left: 20px;
+            color: #adb5bd;
+        }
+        .progress{
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body style="background-color: #eee;">
+    <%-include("partials/extras/nav")%> 
+
+    <%
+        function datavariable(x){
+            <!-- console.log(x); -->
+            if(x>60) return "Strong evidence";
+            if(x>20) return "Moderate evidence";
+            return "Mild evidence"
+        }
+
+        function image(x){
+            if(x==='male')return 'male.png';
+            return 'female.png'
+        }
+
+        function recommend(x,y){
+            if(x>20)return true;
+            if(y>0.4)return true;
+            return false;
+        }
+
+        var tests = ['Dix-Hallpike test','','Nucleic acid-based tests(NAT)','ELISA test','DUTCH test','Adrenal cortisol panel','Prothrombin time (PTT) test','Alanine transaminase (ALT) test','Intradermal skin testing','Spirometry (Lung Function Tests)','Antinuclear antibody test (ANA)','Anti-cyclic citrullinated protein test (Anti-CCP)','Spirometry','Methacholine challenge test','Myelography','Electromyography','Blood test','Viral culture','Bile acid levels test','Ultrasound','','','Polymerase chain reaction (PCR)','Plaque Reduction Neutralization Test (PRNT)','A1C Test','Glucose Tolerance Test','Digital rectal scan','Sigmoidoscopy','Patch test','Blood test','Susceptibility testing','Calcofluor white stain','Esophagram','Upper Endoscopy','Rectal examination','Stool test','Cardiac enzymes test','Magnetic resonance imaging (MRI)','Antigen test','Transient elastography','Enzyme-linked immunosorbent assay (ELISA)','Recombinant ImmunoBlot assay (RIBA)','Blood test','','Blood test','','Blood Pressure Test','','Complete blood count (CBC)','Thyroid uptake test','Blood glucose test','','Thyroid function tests','Thyroid scan','Swab test','Physical examination','Computerised tomography (CT scan)','Blood Tests','Real-time polymerase chain reaction (RT-PCR)','Blood test','Cerebrospinal fluid (CSF) analysis','Magnetic resonance imaging (MRI)','Analysis of joint fluid','X-ray','Myelogram','Electromyogram','Endoscopy','Stool test','Sputum culture test','Urine test','Complete blood count (CBC)','Physical examination','Tuberculin skin test','Pleural fluid analysi','Widal test','Blood test','Cystoscopy','Urine analysis','Ultrasound','Venogram','Blood test',''];
+        var disease = ['(vertigo) Paroymsal  Positional Vertigo',
+ 'AIDS',
+ 'Acne',
+ 'Alcoholic hepatitis',
+ 'Allergy',
+ 'Arthritis',
+ 'Bronchial Asthma',
+ 'Cervical spondylosis',
+ 'Chicken pox',
+ 'Chronic cholestasis',
+ 'Common Cold',
+ 'Dengue',
+ 'Diabetes ',
+ 'Dimorphic hemmorhoids(piles)',
+ 'Drug Reaction',
+ 'Fungal infection',
+ 'GERD',
+ 'Gastroenteritis',
+ 'Heart attack',
+ 'Hepatitis B',
+ 'Hepatitis C',
+ 'Hepatitis D',
+ 'Hepatitis E',
+ 'Hypertension ',
+ 'Hyperthyroidism',
+ 'Hypoglycemia',
+ 'Hypothyroidism',
+ 'Impetigo',
+ 'Jaundice',
+ 'Malaria',
+ 'Migraine',
+ 'Osteoarthristis',
+ 'Paralysis (brain hemorrhage)',
+ 'Peptic ulcer diseae',
+ 'Pneumonia',
+ 'Psoriasis',
+ 'Tuberculosis',
+ 'Typhoid',
+ 'Urinary tract infection',
+ 'Varicose veins',
+ 'hepatitis A'];
+
+        var tst=[];
+        function addtest(x,y){
+            console.log(x,y);
+            if(tests[2*x]!='')tst.push(tests[2*x]);
+            if(tests[2*x+1]!='')tst.push(tests[2*x+1]); 
+            if(tests[2*y]!='')tst.push(tests[2*y]);
+            if(tests[2*y+1]!='')tst.push(tests[2*y+1]);
+            console.log(tst);
+        }
+
+    %>
+    
+      <div class="container">
+        <div class="row">
+            <!-- <div class="col-lg-1" style="border: 0px solid black; margin: 0px auto 0px auto;"></div> -->
+            <div class="col-sm-2" style="border: 0px solid black; margin: 0px auto 0px auto;">
+                <div style="margin-top:50px;">
+                    <div>
+                        <div class="hg2">
+                            <strong>Personal Details</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>Gender</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>General Test</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>BMI data</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>Temperature</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>Miscellaneous</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>Symptoms Check</strong>
+                        </div>
+                        <div class="hg1">
+                            <strong>Results</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div style="border-radius:10px; margin: 50px auto; background-color: white; width: 100%; padding-bottom:0; " id="p1">
+                    <div class="row">
+                    <div class="col-sm-2" style="background-color: #007bff; border-bottom-left-radius: 10px; border-top-left-radius: 10px;">
+                        <img src="rpt.png" width="50%" style="margin-left: 25%; margin-top: 5vh;">
+                    </div>
+                    <div class="col-sm-6" style="padding-bottom: 7vh;">
+                        <h2 style="padding: 40px 0px 20px 60px;">Personal Details</h2>
+                        <!-- <p>Information that you provide is anonymous and not shared with anyone.</p> -->
+                        <div class="row" style="font-size: 20px; border-radius: 20px; border: 3px solid #777; margin: 0px 10vh 0 1vh;">
+                            <div class="col-sm-6 ">
+                                <div class="" style="text-align: right;"><strong>Name:</strong><br></div>
+                                <div class="" style="text-align: right;"><strong>Age:</strong><br></div>
+                                <div class="" style="text-align: right;"><strong>Date of Birth:</strong><br></div>
+                                <div class="" style="text-align: right;"><strong>Sex:</strong><br></div>
+                                <div class="" style="text-align: right;"><strong>BMI:</strong><br></div>
+                                <div class="" style="text-align: right;"><strong>Email:</strong><br></div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div><%=name%><br></div>
+                                <div><%=age%><br></div>
+                                <div><%=dob%><br></div>
+                                <div><%=sex%><br></div>
+                                <div><%=bmi%><br></div>
+                                <div><%=email%><br></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 15vh; padding: 0;">
+                        <img src="<%=image(sex)%>" width="70%">
+                    </div>
+                    </div>
+                </div>
+
+                <% if(recommend(perc[0],data2)){%>
+                    <div style="border-radius:10px; margin: 30px auto 0px auto; background-color: #bf1128; width: 100%; padding: 30px 30px 30px 30px;">
+                        <div>
+                            <h3 style="margin-bottom: 30px; color: white;">Recommendation</h3>
+                            <p style="font-size: 18px; color: white;">Based on your health symptoms and history you are asked to visit a doctor as soon as possible.</p>
+                            <hr>
+                        </div>
+                    </div>
+                <%}%>
+
+                <div style="border-radius:10px; margin: 30px auto 0px auto; background-color: white; width: 100%; padding: 40px 30px 30px 30px;">
+                    <div>
+                        <h3 style="margin-bottom: 30px;">Results</h3>
+                        <p style="font-size: 18px; color: #777;">Please note that the list below may not be complete and is provided solely for the pupose and is not a qualified medical option.</p>
+                        <hr>
+                    </div>
+                    <div id="base">
+                        <div class="row">
+                        <div class="col-sm-2">
+                        <div class="progress" style="width: 100%;height: 10px;">
+                            <div class="progress-bar" id="barn" style="float:left; width: <%= perc[0] %>%;" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                          <div class="col-sm-10"><div style="color:#007bff"><%=result[0]%><br></div>
+                            <div>
+                                <%=datavariable(perc[0])%>
+                            </div>
+                        </div>
+                        </div>
+                        <hr>
+                          <div class="row">
+                              <div class="col-sm-2">
+                          <div class="progress" style="width: 100%;height: 10px;">
+                            <div class="progress-bar" id="barn" style="float:left; width: <%= perc[1] %>%;" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          </div>
+                          <div class="col-sm-10"><div style="color:#007bff"><%=result[1]%><br></div>
+                          <div>
+                              <%=datavariable(perc[1])%>
+                          </div>
+                        </div>
+                        </div>
+                        <hr>
+                          <div class="row">
+                              <div class="col-sm-2">
+                          <div class="progress" style="width: 100%;height: 10px;">
+                            <div class="progress-bar" id="barn" style="float:left; width: <%= perc[2] %>%;" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          </div>
+                          <div class="col-sm-10"><div style="color:#007bff"><%=result[2]%><br></div>
+                          <div>
+                              <%=datavariable(perc[2])%>
+                          </div>
+                        </div>
+                        </div>
+                        <hr>
+                          <div class="row">
+                              <div class="col-sm-2">
+                          <div class="progress" style="width: 100%;height: 10px;">
+                            <div class="progress-bar" id="barn" style="float:left; width: <%= perc[3] %>%;" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          </div>
+                          <div class="col-sm-10"><div style="color:#007bff"><%=result[3]%><br></div>
+                          <div>
+                              <%=datavariable(perc[3])%>
+                          </div>
+                        </div>
+                        </div>
+                        <hr>
+                          <div class="row">
+                              <div class="col-sm-2">
+                          <div class="progress" style="width: 100%;height: 10px;">
+                            <div class="progress-bar" id="barn" style="float:left; width: <%= perc[4] %>%;" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          </div>
+                          <div class="col-sm-10"><div style="color:#007bff"><%=result[4]%><br></div>
+                          <div>
+                              <%=datavariable(perc[4])%>
+                          </div>
+                        </div>
+                </div>
+                    </div>
+                
+                </div>
+                
+                <div style="border-radius:10px; margin: 30px auto 50px auto; background-color: white; width: 100%; padding: 40px 30px 40px 30px;">
+                    <div>
+                        <h3 style="margin-bottom: 30px;">Lab Tests</h3>
+                        <h5 style="font-size: 18px; color: #666;">Preventive</h5>
+                        <p style="color: #777;">The Lab tests are based on your symptoms. They are recommended due to risk of your profile.</p>
+                        <hr>
+                        <div>
+                            <%
+                                addtest(ab[0],ab[1]);
+                                tst.forEach(ele=>{%>
+                                    <div >
+                                        <a style="padding-left: 30px;color: #007bff;" href="#"> + <%=ele%></a>
+                                        <hr>
+                                    </div>
+
+                                <% }) %>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            
+            <div class="col-md-1" style="border: 0px solid black; margin: 50px auto;"></div>
+        </div>
+      </div>
+
+      <div class="container" style="z-index:2;background-color: #eee; border-top-left-radius: 10px; border-top-right-radius: 10px; margin-top: 0px; margin-bottom: 0px; border: 1px solid #ccc;padding: 40px; color: #666 ;  ">
+        <div><h3 style="color: #666 ; padding-left: 10px;">About us</h3></div>
+        <div style="margin:25px 0 0 10px; line-height: 15px;" >
+          <p style="margin-bottom: 5vh;">AI powered Diagnosis by TEAM NOBITA.</p>
+          <p>Team Members:</p>
+          <p style="padding-left: 10px;">Shubh Gupta</p>
+          <p style="padding-left: 10px;">Newton Kumar</p>
+          <p style="padding-left: 10px;">Tej Narayan Singh</p>
+        </div>
+      </div>
+
+</body>
+
+</html>

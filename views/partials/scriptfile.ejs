@@ -1,0 +1,217 @@
+<script>
+    
+    var user_sympt = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]];
+
+    var symptoms = ['itching', 'skin_rash', 'nodal_skin_eruptions',
+       'continuous_sneezing', 'shivering', 'chills', 'joint_pain',
+       'stomach_pain', 'acidity', 'ulcers_on_tongue', 'muscle_wasting',
+       'vomiting', 'burning_micturition', 'spotting_ urination',
+       'fatigue', 'weight_gain', 'anxiety', 'cold_hands_and_feets',
+       'mood_swings', 'weight_loss', 'restlessness', 'lethargy',
+       'patches_in_throat', 'irregular_sugar_level', 'cough',
+       'high_fever', 'sunken_eyes', 'breathlessness', 'sweating',
+       'dehydration', 'indigestion', 'headache', 'yellowish_skin',
+       'dark_urine', 'nausea', 'loss_of_appetite', 'pain_behind_the_eyes',
+       'back_pain', 'constipation', 'abdominal_pain', 'diarrhoea',
+       'mild_fever', 'yellow_urine', 'yellowing_of_eyes',
+       'acute_liver_failure', 'fluid_overload', 'swelling_of_stomach',
+       'swelled_lymph_nodes', 'malaise', 'blurred_and_distorted_vision',
+       'phlegm', 'throat_irritation', 'redness_of_eyes', 'sinus_pressure',
+       'runny_nose', 'congestion', 'chest_pain', 'weakness_in_limbs',
+       'fast_heart_rate', 'pain_during_bowel_movements',
+       'pain_in_anal_region', 'bloody_stool', 'irritation_in_anus',
+       'neck_pain', 'dizziness', 'cramps', 'bruising', 'obesity',
+       'swollen_legs', 'swollen_blood_vessels', 'puffy_face_and_eyes',
+       'enlarged_thyroid', 'brittle_nails', 'swollen_extremeties',
+       'excessive_hunger', 'extra_marital_contacts',
+       'drying_and_tingling_lips', 'slurred_speech', 'knee_pain',
+       'hip_joint_pain', 'muscle_weakness', 'stiff_neck',
+       'swelling_joints', 'movement_stiffness', 'spinning_movements',
+       'loss_of_balance', 'unsteadiness', 'weakness_of_one_body_side',
+       'loss_of_smell', 'bladder_discomfort', 'foul_smell_of urine',
+       'continuous_feel_of_urine', 'passage_of_gases', 'internal_itching',
+       'toxic_look_(typhos)', 'depression', 'irritability', 'muscle_pain',
+       'altered_sensorium', 'red_spots_over_body', 'belly_pain',
+       'abnormal_menstruation', 'dischromic _patches',
+       'watering_from_eyes', 'increased_appetite', 'polyuria',
+       'family_history', 'mucoid_sputum', 'rusty_sputum',
+       'lack_of_concentration', 'visual_disturbances',
+       'receiving_blood_transfusion', 'receiving_unsterile_injections',
+       'coma', 'stomach_bleeding', 'distention_of_abdomen',
+       'history_of_alcohol_consumption', 'fluid_overload.1',
+       'blood_in_sputum', 'prominent_veins_on_calf', 'palpitations',
+       'painful_walking', 'pus_filled_pimples', 'blackheads', 'scurring',
+       'skin_peeling', 'silver_like_dusting', 'small_dents_in_nails',
+       'inflammatory_nails', 'blister', 'red_sore_around_nose',
+       'yellow_crust_ooze'];
+
+    var disease = ['(vertigo) Paroymsal  Positional Vertigo',
+ 'AIDS',
+ 'Acne',
+ 'Alcoholic hepatitis',
+ 'Allergy',
+ 'Arthritis',
+ 'Bronchial Asthma',
+ 'Cervical spondylosis',
+ 'Chicken pox',
+ 'Chronic cholestasis',
+ 'Common Cold',
+ 'Dengue',
+ 'Diabetes ',
+ 'Dimorphic hemmorhoids(piles)',
+ 'Drug Reaction',
+ 'Fungal infection',
+ 'GERD',
+ 'Gastroenteritis',
+ 'Heart attack',
+ 'Hepatitis B',
+ 'Hepatitis C',
+ 'Hepatitis D',
+ 'Hepatitis E',
+ 'Hypertension ',
+ 'Hyperthyroidism',
+ 'Hypoglycemia',
+ 'Hypothyroidism',
+ 'Impetigo',
+ 'Jaundice',
+ 'Malaria',
+ 'Migraine',
+ 'Osteoarthristis',
+ 'Paralysis (brain hemorrhage)',
+ 'Peptic ulcer diseae',
+ 'Pneumonia',
+ 'Psoriasis',
+ 'Tuberculosis',
+ 'Typhoid',
+ 'Urinary tract infection',
+ 'Varicose veins',
+ 'hepatitis A'];
+
+    console.log(symptoms.length);
+    console.log(disease);
+
+    function addfunc(){
+        const dis = document.getElementById("input").value.toLowerCase();
+        document.getElementById("input").placeholder = "Symptoms e.g. diarrhoea";
+        var isInput = false;
+
+        var found = -1;
+        symptoms.forEach((e,ind)=>{if(e===dis&&user_sympt[0][ind]===1){found=0;}});
+        console.log(found);
+        if(found === -1){
+        symptoms.forEach((element,index) => {
+            if(dis===element){
+                user_sympt[0][index]=1;
+                isInput = true;
+            }
+        });
+        }
+        if(isInput === false){
+            document.getElementById("input").placeholder = "Symptoms e.g. diarrhoea";
+        }
+        else{
+
+            function setAttributes(el, attrs) {
+                for(var key in attrs) {
+                    el.setAttribute(key, attrs[key]);
+                }
+            }
+
+            var ul = document.getElementById("list");
+            var li = document.createElement("p");
+            const d = dis;
+            var span = document.createElement('span');
+            span.appendChild(document.createTextNode(d));
+            li.appendChild(span);
+            
+            li.setAttribute("style","float:left; margin: 5px 5px 5px 5px; color:white;");
+            li.setAttribute("class","symp");
+            li.setAttribute("onclick","dlt(this.children)");
+            
+            ul.appendChild(li);
+        }
+        document.getElementById("input").value="";
+    }
+
+    async function loadModel() {
+      model = undefined;
+      modellling = undefined;
+      model = tf.loadLayersModel("https://raw.githubusercontent.com/esingee/code_to_care/master/Disease_prediction_json/model.json")
+      .then(models =>{modellling = models;})
+      .catch(error =>{console.log(error);})
+      console.log(model);
+    }
+    loadModel();
+
+    function make_prediction() {
+      input_xs = tf.tensor2d(user_sympt);
+      output = modellling.predict(input_xs);
+      outputData = output.dataSync();
+
+      console.log(user_sympt);
+      console.log(input_xs);
+      console.log(outputData);
+
+      var possible_diseases = [];
+      var perc = [];
+
+      var ind=0,max=outputData[0];
+      var a=0,b=0,c=0,d=0,e=0;
+      var a1=0,b1=1,c1=2,d1=3,e1=4;
+      outputData.forEach((element,index) => {
+        //   if(element>0.1) possible_diseases.push(disease[index])
+          if(element>a){e=d;d=c;c=b;b=a;e1=d1;d1=c1;c1=b1;b1=a1;a=element;a1=index;}
+          else if(element>b){e=d;d=c;c=b;e1=d1;d1=c1;c1=b1;b=element;b1=index;}
+          else if(element>c){e=d;d=c;e1=d1;d1=c1;c=element;c1=index;}
+          else if(element>d){e=d;e1=d1;d=element;d1=index;}
+          else if(element>e){e=element;e1=index;}
+      });
+      possible_diseases.push(disease[a1]);perc.push(a);
+      possible_diseases.push(disease[b1]);perc.push(b);
+      possible_diseases.push(disease[c1]);perc.push(c);
+      possible_diseases.push(disease[d1]);perc.push(d);
+      possible_diseases.push(disease[e1]);perc.push(e);
+
+    //   var doc = document.getElementById("root");
+      
+    //   doc.innerHTML = "The possible disease you are having are: <br>";
+    //   possible_diseases.forEach((element,ind) => {
+    //       doc.innerHTML += element + " - ( " + perc[ind] + ") <br>";
+    //   });
+    //   document.getElementById('resultData').value = doc.innerHTML;
+      document.getElementById('f1').value=a1;
+      document.getElementById('f2').value=b1;
+      document.getElementById('a').value=possible_diseases[0];
+      document.getElementById('b').value=possible_diseases[1];
+      document.getElementById('c').value=possible_diseases[2];
+      document.getElementById('d').value=possible_diseases[3];
+      document.getElementById('e').value=possible_diseases[4];
+      document.getElementById('a1').value=(perc[0]*100).toFixed(2);
+      document.getElementById('b1').value=(perc[1]*100).toFixed(2);
+      document.getElementById('c1').value=(perc[2]*100).toFixed(2);
+      document.getElementById('d1').value=(perc[3]*100).toFixed(2);
+      document.getElementById('e1').value=(perc[4]*100).toFixed(2);
+    }
+
+    function dlt(child){
+        // console.log(child[0].innerHTML);
+        var ul = document.getElementById('list');
+        console.log(ul);
+        ul.children.forEach(element => {
+            console.log(element.children[0].innerHTML);
+            if(element.children[0].innerHTML===child[0].innerHTML){
+                ul.removeChild(element);
+                console.log(element);
+            }
+        });
+        symptoms.forEach((element,i) => {
+            if(element===child[0].innerHTML){
+                user_sympt[0][i]=0;
+                console.log(i);
+            }
+        });
+    }
+  </script>

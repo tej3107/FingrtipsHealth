@@ -1,0 +1,164 @@
+<%-include("partials/extras/header")%>   
+    <script>
+        // age in days
+        // height in cm
+        // weight in float kg
+        // gender 1-female 2-male
+        // systolic,dias int
+        // chol, gluse 1-normal 2-abv 3-welanv
+        // smoke, alcol, activ 0-no 1-yes
+        
+        var ag=50*365,hg=170,wi=70,gd=2,sb=120,db=80,ch=1,gl=1,sm=1,al=1,ph=1;
+
+        async function lModel() {
+            model2 = undefined;
+            model_2 = undefined;
+            model2 = tf.loadLayersModel("https://raw.githubusercontent.com/esingee/code_to_care/master/Seriousness_predictor_json/model.json")
+            .then(mddl =>{model_2 = mddl;})
+            .catch(error =>{console.log(error);})
+            console.log(model2);
+        }
+        lModel();
+        var done = false;
+        function addnode(){
+            if(done===false){
+                done = true;
+                console.log(document.getElementById('ag'));
+                ag = parseInt(document.getElementById('ag').value);
+                hg = parseInt(document.getElementById('hg').value);
+                wi = parseInt(document.getElementById('wi').value);
+                gd = parseInt(document.getElementById('gd').value);
+                sb = parseInt(document.getElementById('sb').value);
+                db = parseInt(document.getElementById('db').value);
+                ch = parseInt(document.getElementById('ch').value);
+                gl = parseInt(document.getElementById('gl').value);
+                sm = parseInt(document.getElementById('sm').value);
+                al = parseInt(document.getElementById('al').value);
+                ph = parseInt(document.getElementById('ph').value);
+
+                console.log(ag,hg,wi,gd,sb,db,ch,gl,sm,al,ph,"11 done inside the site");
+
+                abc = [ag,gd,hg,wi,sb,db,ch,gl,sm,al,ph];
+                mean = [19468.950126,1.349648,164.359152,74.208519,128.820453,96.636261,1.366997,1.226535,0.088159,0.053790,0.803718];
+                sd = [2467.374620,0.476862,8.211218,14.397211,154.037729,188.504581,0.680333,0.572353,0.283528,0.225604,0.397187];
+                finalarr = [];
+                for(var i=0;i<11;++i){
+                    finalarr.push((abc[i]-mean[i])/sd[i]);
+                }
+
+                console.log(finalarr);
+                input_mdl = tf.tensor2d([finalarr]);
+                output2 = model_2.predict(input_mdl);
+                outputData2 = output2.dataSync();
+                // console.log(outputData2,"hello",outputData2[0]);
+                document.getElementById('new').value = outputData2[0];
+            }
+        }
+    </script>
+    <style>
+        .symp{
+            border: 1px solid rgb(146, 146, 248);
+            padding: 1px 10px 1px 10px;
+            border-radius: 10px;
+            background-color: rgb(136, 169, 201);
+            /* margin-bottom: 100px; */
+            margin: 10px;
+        }   
+        .symp:hover{
+            background-color: rgb(248, 130, 130);
+        }
+        .hgt{
+            border-left: 3px solid black;
+            height: 30px;
+            padding-left: 20px;
+            color: #adb5bd;
+        }
+        .hg1{
+            /* border-left: 3px solid green; */
+            height: 30px;
+            padding-left: 23px;
+            position: relative;
+        }
+        .hg1::after{
+            padding-left: 25px;
+            content: '';
+            position: absolute;
+            left: 0px;
+            bottom: 10%;
+            height: 100%;
+            border-left: 3px solid #1576d1;
+        }
+        .hg2{
+            border-left: 3px solid #1576d1;
+            height: 30px;
+            padding-left: 20px;
+            color: #adb5bd;
+        }
+    </style>
+</head>
+
+<body style="background-color: #eee;">
+    <%-include("partials/extras/nav")%>
+    
+        <input type="hidden" name="ag" id="ag" value="<%=ag%>">
+        <input type="hidden" name="hg" id="hg" value="<%=hg%>">
+        <input type="hidden" name="wi" id="wi" value="<%=wi%>">
+        <input type="hidden" name="gd" id="gd" value="<%=gd%>">
+        <input type="hidden" name="sb" id="sb" value="<%=sb%>">
+        <input type="hidden" name="db" id="db" value="<%=db%>">
+        <input type="hidden" name="ch" id="ch" value="<%=ch%>">
+        <input type="hidden" name="gl" id="gl" value="<%=gl%>">
+        <input type="hidden" name="sm" id="sm" value="<%=sm%>">
+        <input type="hidden" name="al" id="al" value="<%=al%>">
+        <input type="hidden" name="ph" id="ph" value="<%=ph%>">
+    
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-1" style="border: 0px solid black; margin: 0px auto 0px auto;"></div>
+            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;">
+                <div style="margin-top:50px;">
+                    <div>
+                        <div class="hg2">
+                            <strong>Personal Details</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>Gender</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>General Test</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>BMI data</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>Temperature</strong>
+                        </div>
+                        <div class="hg2">
+                            <strong>Miscellaneous</strong>
+                        </div>
+                        <div class="hg1">
+                            <strong>Symptoms Check</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12"style="border-radius:10px; margin: 50px auto; background-color: white; height: 80vh; width:100%" id="p1">
+                <div class="row">
+                <div class="col-sm-7">
+                    <div style="margin-top: 70vh;">
+                    <form action="/results" method="post">
+                        <%-include("partials/selection")%>
+                    </form>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <img src="doctor.png" width="100%" style="margin-top: 14vh;">
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-2" style="border: 0px solid black; margin: 50px auto 0px auto;"></div>
+        </div>
+      </div>
+</body>
+
+</html>

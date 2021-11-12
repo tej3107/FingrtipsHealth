@@ -1,0 +1,40 @@
+    <div style="position: absolute;top:20%;padding-left: 20px;">
+
+<h3 style="margin-bottom: 30px;">Add Symptoms</h3>
+<p style="color: #777;">Add as many symptoms as you can for better results.</p>
+    <div>
+        <div class="input-group mb-3" style="width: 60vh;margin-top: 5px;">
+            <!-- <div> -->
+            <input style="width: 45vh;" list = "disease_list" type="text" id = "input" class="form-control" placeholder="Symptoms e.g. diarrhoea" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <%-include("datalistSymptoms")%>
+            <button width="width:15vh;" onclick="addfunc(),addnode()" class="btn btn-outline-secondary btn-light" type="button" id="button-addon2">Add</button>
+            <!-- </div> -->
+        <div>
+            <p id="list" style="margin-top: 5px; font-size: small;">
+            </p>
+        </div>
+    </div>
+<!-- </div> -->
+    <!-- <center> -->
+        <!-- <form action="/results" method="post"> -->
+        <div style="margin-top:20px ;">
+            <input name="a" type="hidden" id="a">
+        <input name="b" type="hidden" id="b">
+        <input name="c" type="hidden" id="c">
+        <input name="d" type="hidden" id="d">
+        <input name="e" type="hidden" id="e">
+        <input name="a1" type="hidden" id="a1">
+        <input name="b1" type="hidden" id="b1">
+        <input name="c1" type="hidden" id="c1">
+        <input name="d1" type="hidden" id="d1">
+        <input name="e1" type="hidden" id="e1">
+        <input name="f1" type="hidden" id="f1">
+        <input name="f2" type="hidden"  id="f2">
+        <input name="new" type="hidden" id="new">
+            <button onclick="make_prediction()" type="submit" class="btn" style="background-color: #1576d1; color: white;">View Results</button>
+        </div>
+        <div id="root" name="root">
+        </div>
+        <!-- </form> -->
+    </div>
+</div>

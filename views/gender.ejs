@@ -1,0 +1,138 @@
+<%-include("partials/extras/header")%>   
+    <script>
+        var p1 = 0;
+        var agePat = 50;
+        function agechange(){
+            const age= document.getElementById('age').value;
+            console.log(age);
+            document.getElementById('age1').innerHTML = age;
+
+            age1 = document.getElementById('age1');
+            p2 = (5.2*age)+250;
+            p3 = p2.toString()+"px";
+            age1.style.paddingLeft = p3;
+
+        }
+        // agechange();
+        function next(){
+            p1=p1+1;
+            a = 'p'+p1.toString();
+            for(var i=1;i<=2;++i){
+                b = 'p'+ i.toString();
+                var x = document.getElementById(b);
+                x.style.display = 'none';
+            }
+            var x = document.getElementById(a);
+            x.style.display = 'block';
+        }
+        next();
+    </script>
+    <style>
+        .symp{
+            border: 1px solid rgb(146, 146, 248);
+            padding: 1px 10px 1px 10px;
+            border-radius: 10px;
+            background-color: rgb(136, 169, 201);
+            /* margin-bottom: 100px; */
+            margin: 10px;
+        }   
+        .symp:hover{
+            background-color: rgb(248, 130, 130);
+        }
+        .hgt{
+            border-left: 3px solid black;
+            height: 30px;
+            padding-left: 20px;
+            color: #adb5bd;
+        }
+        .hg1{
+            /* border-left: 3px solid green; */
+            height: 30px;
+            padding-left: 23px;
+            position: relative;
+        }
+        .hg1::after{
+            padding-left: 25px;
+            content: '';
+            position: absolute;
+            left: 0px;
+            bottom: 10%;
+            height: 100%;
+            border-left: 3px solid #1576d1;
+        }
+        .hg2{
+            border-left: 3px solid #1576d1;
+            height: 30px;
+            padding-left: 20px;
+            color: #adb5bd;
+        }
+    </style>
+</head>
+
+<body style="background-color: #eee;">
+    <%-include("partials/extras/nav")%> 
+    
+    
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-1" style="border: 0px solid black; margin: 0px auto 0px auto;"></div>
+            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;">
+                <div style="margin-top:50px;">
+                    <div>
+                        <div class="hg2">
+                            <strong>Personal Details</strong>
+                        </div>
+                        <div class="hg1">
+                            <strong>Gender</strong>
+                        </div>
+                        <div class="hgt">
+                            <strong>General Test</strong>
+                        </div>
+                        <div class="hgt">
+                            <strong>BMI data</strong>
+                        </div>
+                        <div class="hgt">
+                            <strong>Temperature</strong>
+                        </div>
+                        <div class="hgt">
+                            <strong>Miscellaneous</strong>
+                        </div>
+                        <div class="hgt">
+                            <strong>Symptoms Check</strong>
+                        </div>
+                        <div class="hgt">
+                            <strong>Results</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7"style="border-radius:10px; margin: 50px auto; background-color: white; width: 40%; height: 80vh;" id="p1">
+                <center>
+                <form action="/gentest" method="post">
+                    <!-- gender of the person -->
+                    <div><h4 style="top:20%; position: absolute; width: 110vh;">What is your Sex?</h4></div>
+
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="top:30%;left:23% ;position: absolute;">
+                        <div class="btn-group me-2" role="group" aria-label="First group" style="margin: 20px;">
+                          <button type="submit" class="btn btn-light" style="width: 25vh" name="male" value="male">
+                              Male <br><img height="120vh" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyOCA1OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjAiIGZpbGw9IiM1NTU1NTUiIHN0cm9rZT0iIzU1NTU1NSI+CiAgICA8cGF0aCBkPSJNMjUuNDk1IDMzLjU1OWMtLjg2OS45MjktMS45NzMgMS40MDQtMy4yNzIgMS40MzEtLjExIDExLjE5LTEuMTIgMTguNDUyLTEuMjI3IDE5LjE4NUEzLjk4IDMuOTggMCAwIDEgMTcgNThoLTZhMy45NzkgMy45NzkgMCAwIDEtMy45OTYtMy44MjNjLS4xMTEtLjczOC0xLjEyOS03Ljg2LTEuMjI5LTE5LjE4OC0xLjIxOS0uMDI4LTIuMjY5LS40OTUtMy4xMTctMS40MDZDLjE0MiAzMC44NzguMDEyIDI0LjguMzQ3IDIwLjE3N2MuMTg0LTIuNTM4IDEuNjg2LTYuNzY4IDkuMzk3LTcuODg4QzguMzMyIDEwLjk4MSA3LjUgOS4wNzMgNy41IDYuOTk5IDcuNSAzLjE0IDEwLjQxNiAwIDE0IDBzNi41IDMuMTQgNi41IDYuOTk5YzAgMi4wNjktLjgyOCAzLjk3Mi0yLjIzNCA1LjI4IDcuMzM3IDEuMDI4IDkuMTggNC43OTkgOS4zODcgNy45MDQuNDcgNy4wNDktLjIxNiAxMS4yOTktMi4xNTggMTMuMzc2em0uMTYyLTEzLjI0M2MtLjI0Ny0zLjcxLTMuMzg2LTUuODA1LTkuMzI5LTYuMjI5YTEgMSAwIDAgMS0uOTI4LS45OTd2LS42OThjMC0uMzcuMjA0LS43MS41MzEtLjg4MyAxLjU2MS0uODI4IDIuNTY5LTIuNTk5IDIuNTY5LTQuNTFDMTguNSA0LjI0MyAxNi40ODEgMiAxNCAyUzkuNSA0LjI0MyA5LjUgNi45OTljMCAxLjkxMSAxLjAwOCAzLjY4MiAyLjU2OSA0LjUxYS45OTkuOTk5IDAgMCAxIC41MzEuODgzdi43MDJhMSAxIDAgMCAxLS45MjYuOTk3Yy00LjA3NC4zMDMtOC45OTkgMS42My05LjMzMiA2LjIzMS0uNDI2IDUuODg3LjIyMyAxMC4yMjQgMS43ODEgMTEuODk5LjQ2NS41MDEuOTk0Ljc0MSAxLjY0Ny43NjguMDAzLTMuNDU2LjA4OS03LjI0LjMxMy0xMS4zNDQuMDMxLS41NTEuNTEtLjk2OSAxLjA1NC0uOTQzLjU1MS4wMy45NzQuNTAxLjk0MyAxLjA1My0xLjA2MyAxOS4zOTguODg5IDMyLjA0Ny45MDkgMzIuMTcyLjAwNi4wNDMuMDEuMDg2LjAxMS4xMjlBMS45OSAxLjk5IDAgMCAwIDExIDU2aDJWMzRhMSAxIDAgMCAxIDIgMHYyMmgyYTEuOTg5IDEuOTg5IDAgMCAwIDEuOTk5LTEuOTQ0IDEuMDIgMS4wMiAwIDAgMSAuMDExLS4xMjRjLjAyLS4xMyAxLjk3Mi0xMy4xODYuOTA5LTMyLjE3NmExIDEgMCAwIDEgMS45OTctLjExMmMuMjI5IDQuMDgxLjMxNCA3Ljg3Mi4zMTQgMTEuMzQ2LjczNi0uMDI2IDEuMzE2LS4yNzUgMS44MDQtLjc5NyAyLjI1NS0yLjQxMSAxLjc4LTkuNTM2IDEuNjIzLTExLjg3N3oiLz48L3N2Zz4=">
+                          </button>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="Second group" style="margin: 20px;">
+                          <button type="submit" class="btn btn-light" style="width: 25vh" name="female" value="female">
+                              Female<br> <img height="120vh" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyOSA1OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjAiIGZpbGw9IiM1NTU1NTUiIHN0cm9rZT0iIzU1NTU1NSI+CiAgICA8cGF0aCBkPSJNMjYuNTUgMzIuODMxbC0xLjU5Mi40MzhjLjU5NSAyLjE5IDEuMDk1IDQuMjExIDEuNDU3IDUuNzYuMTk4Ljg1LjAzIDEuNzQ4LS40NjIgMi40NjdhMy4wOTcgMy4wOTcgMCAwIDEtMi4xMTcgMS4zMTZjLS43NDIuMTA2LTEuNjIyLjIxOC0yLjYwNC4zMi4wMDEgMS45MDUtLjA0IDcuNDA0LS41MyAxMC45NTMtLjMxNyAyLjMwNi0yLjAxNyAzLjkxNS00LjEzIDMuOTE1aC00LjE0M2MtMi4wOCAwLTMuNzc4LTEuNjAzLTQuMTMtMy45LS41NDYtMy41NTItLjU1My05LjA0Ni0uNTM3LTEwLjk2NWE2Ni44ODMgNjYuODgzIDAgMCAxLTIuNjItLjMyMyAzLjEwNyAzLjEwNyAwIDAgMS0yLjExLTEuMzA4IDMuMTE1IDMuMTE1IDAgMCAxLS40NzItMi40NDYgMTU0LjQ3IDE1NC40NyAwIDAgMSAxLjQzLTUuNzkybC0xLjU5Ni0uNThhMy4yNSAzLjI1IDAgMCAxLTIuMDY3LTMuNjY0Yy44MjctNC4zMiAzLjIzOC0xMy42MjUgOC45MzEtMTUuOTU3YTMuNDYgMy40NiAwIDAgMS0uMzQ3LS4zMDVjLTEuMjc5LTEuMjg4LTEuMjYzLTMuMjY4LTEuMjUtNS4wMTNsLjAwMy0uNDk4QzcuNjY0IDMuMjUyIDEwLjczMSAwIDE0LjUgMHM2LjgzNiAzLjI1MiA2LjgzNiA3LjI0OWMwIC4yNzkuMDA4LjU2NS4wMTYuODU2LjA0NSAxLjU5Ny4wOTYgMy40MDUtMS4wOTEgNC42MjVhMy4yODMgMy4yODMgMCAwIDEtLjQzMS4zNzNjNS42MTkgMi40MDYgOC4xMiAxMS42NTIgOC45OTcgMTUuOTU2YTMuMjM0IDMuMjM0IDAgMCAxLTIuMjc2IDMuNzcyem0tNy44OTkgMjAuOTcxYy40NTItMy4yNzMuNTA2LTguNDcuNTA5LTEwLjQ4NWE2NC4xODcgNjQuMTg3IDAgMCAxLTMuNjI0LjE3VjU1LjkzaDEuMDM1YzEuMjM0IDAgMS45MzQtMS4wNjggMi4wOC0yLjEyN3ptLTguMzA1LS4wMTVjLjE2MyAxLjA2NS44NyAyLjE0MiAyLjA4MyAyLjE0MmgxLjAzNVY0My40ODhhNjUuMDg4IDY1LjA4OCAwIDAgMS0zLjYzLS4xN2MtLjAxMiAyLjAwOC4wMTEgNy4yMDMuNTEyIDEwLjQ2OXptMTYuNDUxLTI0LjMxNGMtLjcxLTMuNDkxLTMuNTItMTQuODgtOS44MTEtMTQuODhhMS4wMzYgMS4wMzYgMCAwIDEtMS4wMzYtMS4wMzZ2LS43MjJjMC0uNTcyLjQ2NC0xLjAzNiAxLjAzNi0xLjAzNi44NTYgMCAxLjQ1OS0uMTczIDEuNzktLjUxMy41NzYtLjU5My41NC0xLjg3OS41MDUtMy4xMjItLjAwOC0uMzExLS4wMTctLjYxOC0uMDE3LS45MTUgMC0yLjgwNy0yLjE4Mi01LjE3OC00Ljc2NC01LjE3OC0yLjU4MyAwLTQuNzY0IDIuMzcxLTQuNzY0IDUuMTc4bC0uMDAzLjUxNGMtLjAxIDEuMzQtLjAyMiAyLjg2MS42NDkgMy41MzguMzMyLjMzNS44NjcuNDk4IDEuNjMyLjQ5OC41NzIgMCAxLjAzNi40NjQgMS4wMzYgMS4wMzZ2LjcyN2MwIC41NzEtLjQ2NCAxLjAzNS0xLjAzNiAxLjAzNS02LjMyNiAwLTguOTg3IDExLjM0LTkuNjUyIDE0LjgxNGExLjE4MSAxLjE4MSAwIDAgMCAuNzQ4IDEuMzMxbDEuNDM3LjUyMmMxLjA1Ni0zLjcwMiAyLjM2NC03LjYzMiAzLjg0Ny0xMC42YTEuMDM2IDEuMDM2IDAgMSAxIDEuODUzLjkyOEM3LjU4NCAyNi45MiA1LjM5NyAzNS45IDQuNTgxIDM5LjUxNWMtLjA2NC4yODQtLjAwOC41NzMuMTU3LjgxNC4xNjQuMjM4LjQxMy4zOTIuNjk4LjQzNCAyLjExNy4zMDMgNS40MDcuNjY2IDkuMDY0LjY2NiAzLjYwNiAwIDYuOTA4LS4zNjMgOS4wNDQtLjY2Ny4yODgtLjA0LjUzNS0uMTk2LjY5OS0uNDM1LjE2OC0uMjQ0LjIyMi0uNTM4LjE1NC0uODI3LS44My0zLjU1Mi0zLjA0LTEyLjQwOS01LjY1NS0xNy45MjhhMS4wMzYgMS4wMzYgMCAwIDEgMS44NzMtLjg4N2MxLjQzOCAzLjAzNyAyLjcyOSA2Ljk0IDMuNzgxIDEwLjU5bDEuNTg5LS40MzdjLjU4LS4xNy45MzYtLjc1OS44MTItMS4zNjV6Ii8+PC9zdmc+">
+                          </button>
+                        </div>
+                      </div>
+                
+                <!-- <button class="btn btn-primary">Next</button> -->
+            </form>
+            </center>
+            </div>
+            
+            <div class="col-md-2" style="border: 0px solid black; margin: 50px auto;"></div>
+        </div>
+      </div>
+</body>
+
+</html>

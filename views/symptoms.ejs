@@ -94,6 +94,16 @@
             padding-left: 20px;
             color: #adb5bd;
         }
+        @media (max-width:1000px){
+            #basicd1{
+                display: none;
+            }
+        }
+        @media (max-width:600px){
+            #basicd2{
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -115,14 +125,14 @@
       <div class="container">
         <div class="row">
             <div class="col-lg-1" style="border: 0px solid black; margin: 0px auto 0px auto;"></div>
-            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;">
+            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;" id="basicd1">
                 <div style="margin-top:50px;">
                     <div>
                         <div class="hg2">
                             <strong>Personal Details</strong>
                         </div>
                         <div class="hg2">
-                            <strong>Gender</strong>
+                            <strong>Sex</strong>
                         </div>
                         <div class="hg2">
                             <strong>General Test</strong>
@@ -142,16 +152,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-7 col-md-12"style="border-radius:10px; margin: 50px auto; background-color: white; height: 80vh; width:100%" id="p1">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-7 justify-content-center" style="border-radius:10px; margin: 50px auto; background-color: white; width:100%" id="p1">
                 <div class="row">
                 <div class="col-sm-7">
-                    <div style="margin-top: 70vh;">
+                    <div style="margin-top: 20%;">
                     <form action="/results" method="post">
                         <%-include("partials/selection")%>
                     </form>
                     </div>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-sm-5" id="basicd2">
                     <img src="doctor.png" width="100%" style="margin-top: 14vh;">
                 </div>
                 </div>

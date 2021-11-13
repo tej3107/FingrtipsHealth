@@ -66,6 +66,11 @@
             padding-left: 20px;
             color: #adb5bd;
         }
+        @media (max-width:1000px){
+            #basicd1{
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -76,7 +81,7 @@
       <div class="container">
         <div class="row">
             <div class="col-lg-1" style="border: 0px solid black; margin: 0px auto 0px auto;"></div>
-            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;">
+            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;" id="basicd1">
                 <div style="margin-top:50px;">
                     <div>
                         <div class="hg2">
@@ -106,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-7"style="border-radius:10px; margin: 50px auto; background-color: white; width: 40%; height: 80vh;" id="p1">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-7 justify-content-center" style="border-radius:10px; margin: 50px auto; background-color: white;" id="p1">
                 <div style="margin: 12vh 5vh 0 5vh;">
                 <form action="/hw" method="post">
                     <h3 style="margin-bottom:30px;">General Test</h3>
@@ -145,7 +150,7 @@
                     </div>
 
                 
-                    <button class="btn" style=" background-color: #1576d1; color: white; margin-left: 40%;width: 10%;">Next</button>
+                    <button class="btn" style=" background-color: #1576d1; color: white; margin-left: 40%;margin-bottom: 10%;">Next</button>
                     </form>
                 </div>
             </div>

@@ -66,6 +66,11 @@
             padding-left: 20px;
             color: #adb5bd;
         }
+        @media (max-width:1000px){
+            #basicd1{
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -76,7 +81,7 @@
       <div class="container">
         <div class="row">
             <div class="col-lg-1" style="border: 0px solid black; margin: 0px auto 0px auto;"></div>
-            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;">
+            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;" id="basicd1">
                 <div style="margin-top:50px;">
                     <div>
                         <div class="hg2">
@@ -106,13 +111,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-7"style="border-radius:10px; margin: 50px auto; background-color: white; width: 40%; height: 80vh;" id="p1">
-                <center>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-7 justify-content-center" style="border-radius:10px; margin: 50px auto; background-color: white; padding:10% 3% 10% 12%;" id="p1">
+                <!-- <center> -->
                 <form action="/gentest" method="post">
                     <!-- gender of the person -->
-                    <div><h4 style="top:20%; position: absolute; width: 110vh;">What is your Sex?</h4></div>
+                    <div><h4 style=" width: 110vh; padding-left: 15%;">What is your Sex?</h4></div>
 
-                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="top:30%;left:23% ;position: absolute;">
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="">
                         <div class="btn-group me-2" role="group" aria-label="First group" style="margin: 20px;">
                           <button type="submit" class="btn btn-light" style="width: 25vh" name="male" value="male">
                               Male <br><img height="120vh" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyOCA1OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjAiIGZpbGw9IiM1NTU1NTUiIHN0cm9rZT0iIzU1NTU1NSI+CiAgICA8cGF0aCBkPSJNMjUuNDk1IDMzLjU1OWMtLjg2OS45MjktMS45NzMgMS40MDQtMy4yNzIgMS40MzEtLjExIDExLjE5LTEuMTIgMTguNDUyLTEuMjI3IDE5LjE4NUEzLjk4IDMuOTggMCAwIDEgMTcgNThoLTZhMy45NzkgMy45NzkgMCAwIDEtMy45OTYtMy44MjNjLS4xMTEtLjczOC0xLjEyOS03Ljg2LTEuMjI5LTE5LjE4OC0xLjIxOS0uMDI4LTIuMjY5LS40OTUtMy4xMTctMS40MDZDLjE0MiAzMC44NzguMDEyIDI0LjguMzQ3IDIwLjE3N2MuMTg0LTIuNTM4IDEuNjg2LTYuNzY4IDkuMzk3LTcuODg4QzguMzMyIDEwLjk4MSA3LjUgOS4wNzMgNy41IDYuOTk5IDcuNSAzLjE0IDEwLjQxNiAwIDE0IDBzNi41IDMuMTQgNi41IDYuOTk5YzAgMi4wNjktLjgyOCAzLjk3Mi0yLjIzNCA1LjI4IDcuMzM3IDEuMDI4IDkuMTggNC43OTkgOS4zODcgNy45MDQuNDcgNy4wNDktLjIxNiAxMS4yOTktMi4xNTggMTMuMzc2em0uMTYyLTEzLjI0M2MtLjI0Ny0zLjcxLTMuMzg2LTUuODA1LTkuMzI5LTYuMjI5YTEgMSAwIDAgMS0uOTI4LS45OTd2LS42OThjMC0uMzcuMjA0LS43MS41MzEtLjg4MyAxLjU2MS0uODI4IDIuNTY5LTIuNTk5IDIuNTY5LTQuNTFDMTguNSA0LjI0MyAxNi40ODEgMiAxNCAyUzkuNSA0LjI0MyA5LjUgNi45OTljMCAxLjkxMSAxLjAwOCAzLjY4MiAyLjU2OSA0LjUxYS45OTkuOTk5IDAgMCAxIC41MzEuODgzdi43MDJhMSAxIDAgMCAxLS45MjYuOTk3Yy00LjA3NC4zMDMtOC45OTkgMS42My05LjMzMiA2LjIzMS0uNDI2IDUuODg3LjIyMyAxMC4yMjQgMS43ODEgMTEuODk5LjQ2NS41MDEuOTk0Ljc0MSAxLjY0Ny43NjguMDAzLTMuNDU2LjA4OS03LjI0LjMxMy0xMS4zNDQuMDMxLS41NTEuNTEtLjk2OSAxLjA1NC0uOTQzLjU1MS4wMy45NzQuNTAxLjk0MyAxLjA1My0xLjA2MyAxOS4zOTguODg5IDMyLjA0Ny45MDkgMzIuMTcyLjAwNi4wNDMuMDEuMDg2LjAxMS4xMjlBMS45OSAxLjk5IDAgMCAwIDExIDU2aDJWMzRhMSAxIDAgMCAxIDIgMHYyMmgyYTEuOTg5IDEuOTg5IDAgMCAwIDEuOTk5LTEuOTQ0IDEuMDIgMS4wMiAwIDAgMSAuMDExLS4xMjRjLjAyLS4xMyAxLjk3Mi0xMy4xODYuOTA5LTMyLjE3NmExIDEgMCAwIDEgMS45OTctLjExMmMuMjI5IDQuMDgxLjMxNCA3Ljg3Mi4zMTQgMTEuMzQ2LjczNi0uMDI2IDEuMzE2LS4yNzUgMS44MDQtLjc5NyAyLjI1NS0yLjQxMSAxLjc4LTkuNTM2IDEuNjIzLTExLjg3N3oiLz48L3N2Zz4=">
@@ -127,7 +132,7 @@
                 
                 <!-- <button class="btn btn-primary">Next</button> -->
             </form>
-            </center>
+            <!-- </center> -->
             </div>
             
             <div class="col-md-2" style="border: 0px solid black; margin: 50px auto;"></div>

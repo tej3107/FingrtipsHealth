@@ -9,37 +9,34 @@
     float:left;
     color: green;
   }
+  @media (max-width:780px) {
+    #basicp1{
+      display: none;
+    }
+    #basicp2{
+      display: none;
+    }
+  }
+  @media (max-width:1000px){
+    #basicp3{
+      display: none;
+    }
+  }
 </style>
 </head>
 
 <body style="background-color: #eee;;">
 
-  <nav class="nav" style="position:fixed;height:70px; background-color: #021f30; color: white; width: 100%;top:0;z-index:3;">
-    <div style="padding-left: 30vh;">
-      <ul class="nav">
-        <li>
-          <a class="nav-link" aria-current="page" href="/" style="padding: 0px;">
-            <img height="75vh" src="fgt.png">
-            <!-- <strong style="color: white;font-size:xx-large;">Symptomate</strong> -->
-          </a>
-    </li>
-        <li style="width:120vh; text-align:end;">
-        <form action="/detail" method="get">
-          <button class="btn" style="margin-top:15px;background-color: #1ac98e;;color: white;"><strong>Checkup</strong></button>
-        </form>
-      </li>
-      </ul>
+  <nav class="navbar navbar-light" style="height:80px; background-color: #021f30; color: white; width: 100%;top:0;z-index:3;padding: 0px;"> 
+    <div class="container-fluid">
+      <a class="nav-link" aria-current="page" href="/" style="padding-left: 10%;padding-top: 0px;">
+        <img height="75vh" src="fgt.png">
+      </a>
+      <form class="d-flex" action="/detail" method="get">
+        <button class="btn" style="margin-top:0px;background-color: #1ac98e;;color: white;margin-right: 25vh;"><strong>Checkup</strong></button>
+      </form>
     </div>
-    </nav>
-    <div class="spacer" style="width:100%;height:55px;">
-      &nbsp;
-  </div>
-
-
-      <!-- <form action="/detail" method="get">
-        <button class="btn" style="margin:20px 200px 0 200px; background-color: #1ac98e;;color: white;"><strong>Checkup</strong></button>
-      </form> -->
-      <!-- <%-include("./partials/extras/sidebar")%> -->
+  </nav>
 
       <div class="container" style="z-index:2;background-color: #021f30; border-radius: 7px; margin-top: 60px; margin-bottom: 50px;">
         <div class="row">
@@ -48,7 +45,7 @@
               <h2 style="margin-bottom: 7vh;">
             PRELIMINARY DIAGNOSIS ON YOUR FINGRTIPS
           </h2>
-            <div style="font-size: 18px;line-height: 5vh; padding-left: 10px;">
+            <div style="font-size: 18px;line-height: 5vh; padding-left: 10px;" id="basicp1">
             Check your symptoms with our <STRONG>AI POWERED</STRONG> Disease Predictor Application and find out what would be causing them.
           </div>
             </div>
@@ -58,7 +55,7 @@
             </form>
           </div>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-8" id="basicp2">
             <img src="frnt.png" width="100%">
           </div>
         </div>
@@ -72,11 +69,11 @@
           <div class="row">
             <!-- <div class="col-sm-"></div> -->
             <div class="col-sm-7">
-              <div style="margin: 70px 0 0 100px;">
+              <div style="margin: 70px 0 100px 100px;">
               <h1>
                 Fingrtips provides you with a fast and accurate health assessment
               </h1>
-              <div class="row" style="margin-top: 0px;">
+              <div class="row" style="margin-top: 0px;" id="basicp3">
                 <div class="col-sm-1">
                   <div style="text-align: end;">
                     <div style="margin: 20px 0 20px 30px; border: 2px soild gray;">1.</div>

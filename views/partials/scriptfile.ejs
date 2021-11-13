@@ -94,6 +94,8 @@
     console.log(disease);
 
     function addfunc(){
+        
+        document.getElementById('reslt').setAttribute('type','submit');
         const dis = document.getElementById("input").value.toLowerCase();
         document.getElementById("input").placeholder = "Symptoms e.g. diarrhoea";
         var isInput = false;

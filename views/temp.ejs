@@ -66,6 +66,11 @@
             padding-left: 20px;
             color: #adb5bd;
         }
+        @media (max-width:1000px){
+            #basicd1{
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -76,7 +81,7 @@
       <div class="container">
         <div class="row">
             <div class="col-lg-1" style="border: 0px solid black; margin: 0px auto 0px auto;"></div>
-            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;">
+            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;" id="basicd1">
                 <div style="margin-top:50px;">
                     <div>
                         <div class="hg2">
@@ -103,30 +108,30 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-7"style="border-radius:10px; margin: 50px auto; background-color: white; width: 40%; height: 80vh;" id="p1">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-7 justify-content-center" style="border-radius:10px; margin: 50px auto; background-color: white;padding:3% 6% 5% 7%;;" id="p1">
                 <form action="/misc" method="post">
                     <!-- temp of the person -->
                     <div>
-                        <center>
-                        <h4 style="width: 60%; left: 20%; position: absolute; top: 10%;">What is the temperature measured by thermometer?</h4>
-                        <div class="btn-group-vertical" style="width: 30%; left: 35%; position: absolute; top: 28%;">
+                        <!-- <center> -->
+                        <h4 style="">What is the temperature measured by thermometer?</h4>
+                        <div class="btn-group-vertical" style="padding-left: 30%;">
                             <button type="submit" class="btn btn-light" style="margin: 6px;" name="x95" value="95">
-                                &lt 96&#176 C
+                                &lt 96&#176 F
                             </button>
                             <button type="submit" class="btn btn-light" style="margin: 6px;" name="x98" value="98">
-                                96&#176 C - 99&#176 C
+                                96&#176 F - 99&#176 F
                             </button>
                             <button type="submit" class="btn btn-light" style="margin: 6px;" name="x101" value="101">
-                                100&#176 C - 102&#176 C
+                                100&#176 F - 102&#176 F
                             </button>
                             <button type="submit" class="btn btn-light" style="margin: 6px;" name="x103" value="103">
-                                102&#176 C - 104&#176 C
+                                102&#176 F - 104&#176 F
                             </button>
                             <button type="submit" class="btn btn-light" style="margin: 6px;" name="x105" value="105">
-                                &#62 104&#176 C
+                                &#62 104&#176 F
                             </button>
                         </div>
-                    </center>
+                    <!-- </center> -->
                     </div>
                 
                 <!-- <button class="btn btn-primary">Next</button> -->

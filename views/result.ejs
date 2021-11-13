@@ -44,6 +44,16 @@
         .progress{
             margin-top: 25px;
         }
+        @media (max-width:1000px){
+            #basicd1{
+                display: none;
+            }
+        }
+        @media (max-width:1200px){
+            .emailsmall{
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -122,12 +132,17 @@
             console.log(tst);
         }
 
+        function capital(sex){
+            if(sex==='male')return "Male";
+            return "Female";
+        }
+
     %>
     
       <div class="container">
         <div class="row">
             <!-- <div class="col-lg-1" style="border: 0px solid black; margin: 0px auto 0px auto;"></div> -->
-            <div class="col-sm-2" style="border: 0px solid black; margin: 0px auto 0px auto;">
+            <div class="col-sm-2" style="border: 0px solid black; margin: 0px auto 0px auto;" id="basicd1">
                 <div style="margin-top:50px;">
                     <div>
                         <div class="hg2">
@@ -157,31 +172,31 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-9 justify-content-center">
                 <div style="border-radius:10px; margin: 50px auto; background-color: white; width: 100%; padding-bottom:0; " id="p1">
                     <div class="row">
                     <div class="col-sm-2" style="background-color: #007bff; border-bottom-left-radius: 10px; border-top-left-radius: 10px;">
                         <img src="rpt.png" width="50%" style="margin-left: 25%; margin-top: 5vh;">
                     </div>
                     <div class="col-sm-6" style="padding-bottom: 7vh;">
-                        <h2 style="padding: 40px 0px 20px 60px;">Personal Details</h2>
+                        <h2 style="padding: 40px 0px 20px 20px;">Personal Details</h2>
                         <!-- <p>Information that you provide is anonymous and not shared with anyone.</p> -->
-                        <div class="row" style="font-size: 20px; border-radius: 20px; border: 3px solid #777; margin: 0px 10vh 0 1vh;">
-                            <div class="col-sm-6 ">
+                        <div class="row" style="font-size: 15px; border-radius: 20px; border: 3px solid #777; margin: 0px 10vh 0 1vh; padding: 10px;">
+                            <div class="col-sm-4 ">
                                 <div class="" style="text-align: right;"><strong>Name:</strong><br></div>
                                 <div class="" style="text-align: right;"><strong>Age:</strong><br></div>
-                                <div class="" style="text-align: right;"><strong>Date of Birth:</strong><br></div>
+                                <div class="" style="text-align: right;"><strong>DOB:</strong><br></div>
                                 <div class="" style="text-align: right;"><strong>Sex:</strong><br></div>
                                 <div class="" style="text-align: right;"><strong>BMI:</strong><br></div>
-                                <div class="" style="text-align: right;"><strong>Email:</strong><br></div>
+                                <div class="emailsmall" style="text-align: right;"><strong>Email:</strong><br></div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-8">
                                 <div><%=name%><br></div>
                                 <div><%=age%><br></div>
                                 <div><%=dob%><br></div>
-                                <div><%=sex%><br></div>
+                                <div><%=capital(sex)%><br></div>
                                 <div><%=bmi%><br></div>
-                                <div><%=email%><br></div>
+                                <div class="emailsmall"><%=email%><br></div>
                             </div>
                         </div>
                     </div>
@@ -195,7 +210,7 @@
                     <div style="border-radius:10px; margin: 30px auto 0px auto; background-color: #bf1128; width: 100%; padding: 30px 30px 30px 30px;">
                         <div>
                             <h3 style="margin-bottom: 30px; color: white;">Recommendation</h3>
-                            <p style="font-size: 18px; color: white;">Based on your health symptoms and history you are asked to visit a doctor as soon as possible.</p>
+                            <p style="font-size: 18px; color: white;">Based on your health symptoms and lifestyle you are asked to visit a doctor as soon as possible.</p>
                             <hr>
                         </div>
                     </div>

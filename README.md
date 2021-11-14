@@ -10,3 +10,5 @@
 
 
 AI POWERED diagnosis model
+Link to the website:-
+hidden-ridge-70286.herokuapp.com/

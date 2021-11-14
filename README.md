@@ -9,6 +9,7 @@
 ![image](https://user-images.githubusercontent.com/56201849/141679775-3491d97c-e346-4aa5-8df5-daac2bd69310.png)
 
 
-AI POWERED diagnosis model \n
+AI POWERED diagnosis model
+
 Link to the website:-
 hidden-ridge-70286.herokuapp.com/

@@ -1,0 +1,31 @@
+<%-include("partials/extras/header")%>
+</head>
+
+<body style="background-color: #eee;">
+    <%-include("partials/extras/nav")%> 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10 col-12 justify-content-center">
+                <div style="border-radius:10px; margin: 50px auto; background-color: white; width: 100%; padding-bottom:0; padding: 40px; " id="p1">
+                    <h2 style="margin-bottom: 40px;">Survey Form</h2>
+                    <h4>Please Help us to Improve our Hospital Management System.</h4>
+                    <div style="margin-top: 60px;">
+                        <h5>Add Symptoms Not present in Our Database</h5>
+                        <div>
+                            <form action="/addsymp/<%=id%>" method="post">
+                                <input style="width: 60%; float: left;" type="text" name="symptom" class="form-control" placeholder="Symptoms Not in Database   e.g. Pain in Teeth" >
+                                <button width="width:40%;" class="btn btn-outline-primary " type="submit" id="button-addon2">Add</button>
+                            </form>
+                        </div>
+                        <p style="margin-top: 40px;">It is just a Survey form and symptoms are not added to our database Directly</p>
+                    </div>
+                    <div>
+                        <a href='/symptoms/<%=id%>'><button class="btn btn-outline-danger">Go Back</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+</body>

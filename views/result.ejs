@@ -54,6 +54,12 @@
                 display: none;
             }
         }
+        BookApp{
+            color: #bf1128;
+        }
+        BookApp:hover{
+            color: white;
+        }
     </style>
 </head>
 
@@ -69,58 +75,33 @@
         }
 
         function image(x){
-            if(x==='male')return 'male.png';
-            return 'female.png'
+            if(x==='male')return 'https://raw.githubusercontent.com/tej3107/FingrtipsHealth/main/public/male.png';
+            return 'https://raw.githubusercontent.com/tej3107/FingrtipsHealth/main/public/female.png'
         }
 
         function recommend(x,y){
             if(x>20)return true;
-            if(y>0.4)return true;
             return false;
         }
 
         var tests = ['Dix-Hallpike test','','Nucleic acid-based tests(NAT)','ELISA test','DUTCH test','Adrenal cortisol panel','Prothrombin time (PTT) test','Alanine transaminase (ALT) test','Intradermal skin testing','Spirometry (Lung Function Tests)','Antinuclear antibody test (ANA)','Anti-cyclic citrullinated protein test (Anti-CCP)','Spirometry','Methacholine challenge test','Myelography','Electromyography','Blood test','Viral culture','Bile acid levels test','Ultrasound','','','Polymerase chain reaction (PCR)','Plaque Reduction Neutralization Test (PRNT)','A1C Test','Glucose Tolerance Test','Digital rectal scan','Sigmoidoscopy','Patch test','Blood test','Susceptibility testing','Calcofluor white stain','Esophagram','Upper Endoscopy','Rectal examination','Stool test','Cardiac enzymes test','Magnetic resonance imaging (MRI)','Antigen test','Transient elastography','Enzyme-linked immunosorbent assay (ELISA)','Recombinant ImmunoBlot assay (RIBA)','Blood test','','Blood test','','Blood Pressure Test','','Complete blood count (CBC)','Thyroid uptake test','Blood glucose test','','Thyroid function tests','Thyroid scan','Swab test','Physical examination','Computerised tomography (CT scan)','Blood Tests','Real-time polymerase chain reaction (RT-PCR)','Blood test','Cerebrospinal fluid (CSF) analysis','Magnetic resonance imaging (MRI)','Analysis of joint fluid','X-ray','Myelogram','Electromyogram','Endoscopy','Stool test','Sputum culture test','Urine test','Complete blood count (CBC)','Physical examination','Tuberculin skin test','Pleural fluid analysi','Widal test','Blood test','Cystoscopy','Urine analysis','Ultrasound','Venogram','Blood test',''];
-        var disease = ['(vertigo) Paroymsal  Positional Vertigo',
- 'AIDS',
- 'Acne',
- 'Alcoholic hepatitis',
- 'Allergy',
- 'Arthritis',
- 'Bronchial Asthma',
- 'Cervical spondylosis',
- 'Chicken pox',
- 'Chronic cholestasis',
- 'Common Cold',
- 'Dengue',
- 'Diabetes ',
- 'Dimorphic hemmorhoids(piles)',
- 'Drug Reaction',
- 'Fungal infection',
- 'GERD',
- 'Gastroenteritis',
- 'Heart attack',
- 'Hepatitis B',
- 'Hepatitis C',
- 'Hepatitis D',
- 'Hepatitis E',
- 'Hypertension ',
- 'Hyperthyroidism',
- 'Hypoglycemia',
- 'Hypothyroidism',
- 'Impetigo',
- 'Jaundice',
- 'Malaria',
- 'Migraine',
- 'Osteoarthristis',
- 'Paralysis (brain hemorrhage)',
- 'Peptic ulcer diseae',
- 'Pneumonia',
- 'Psoriasis',
- 'Tuberculosis',
- 'Typhoid',
- 'Urinary tract infection',
- 'Varicose veins',
- 'hepatitis A'];
+        var disease = ['(vertigo) Paroymsal  Positional Vertigo','AIDS',
+            'Acne','Alcoholic hepatitis','Allergy','Arthritis','Bronchial Asthma',
+            'Cervical spondylosis','Chicken pox','Chronic cholestasis','Common Cold','Dengue','Diabetes ',
+            'Dimorphic hemmorhoids(piles)','Drug Reaction','Fungal infection','GERD','Gastroenteritis',
+            'Heart attack','Hepatitis B','Hepatitis C','Hepatitis D','Hepatitis E','Hypertension ',
+            'Hyperthyroidism','Hypoglycemia','Hypothyroidism','Impetigo','Jaundice','Malaria','Migraine',
+            'Osteoarthristis','Paralysis (brain hemorrhage)','Peptic ulcer diseae','Pneumonia','Psoriasis',
+            'Tuberculosis','Typhoid','Urinary tract infection','Varicose veins','hepatitis A'];
+
+        var department = ['Otolaryngologist','Immunologists','Dermatologist','Hepatologist','Allergist','Rheumatologist','Pulmonologist',
+            'Orthopaedists','Infectious disease specialist','Hepatologist','General physician','General physician','Endocrinologist',
+            'Gastroenterologist','Allergist','Infectious disease specialist','Otolaryngologist','Gastroenterologist','Cardiologist','Hepatologist',
+            'Hepatologist','Hepatologist','Hepatologist','General practitioner','Endocrinologist','Endocrinologist',
+            'Endocrinologist','General practitioner','Gastroenterologist','Infectious disease specialist','General practitioner',
+            'Orthopaedician','Neurologist','Gastroenterologist','Pulmonologist','Dermatologist','Infectious disease specialist',
+            'General practitioner','Urologist','Cardiologist','Hepatologist','General Physician','Physical Trainer'
+            ];
 
         var tst=[];
         function addtest(x,y){
@@ -137,6 +118,21 @@
             return "Female";
         }
 
+        function bookcheck(x){
+            console.log(x,'foundhere');
+            if(x.length < 3 )return true;
+            return false;
+        }
+        function booknot(x){
+            if(x==='-1')return true;
+            return false;
+        }
+
+        var index0 = 0,index1 = 1;
+        disease.forEach((ele,ind)=>{
+            if(ele===result[0])index0=ind;
+            else if(ele===result[1])index1=ind;
+        });
     %>
     
       <div class="container">
@@ -149,7 +145,7 @@
                             <strong>Personal Details</strong>
                         </div>
                         <div class="hg2">
-                            <strong>Sex</strong>
+                            <strong>Gender</strong>
                         </div>
                         <div class="hg2">
                             <strong>General Test</strong>
@@ -172,17 +168,19 @@
                     </div>
                 </div>
             </div>
+
+            <!-- --------------------------------------------------------------------------------- -->
+            <!-- Personal Details are shown Below -->
             <div class="col-12 col-sm-12 col-md-12 col-lg-9 justify-content-center">
                 <div style="border-radius:10px; margin: 50px auto; background-color: white; width: 100%; padding-bottom:0; " id="p1">
                     <div class="row">
                     <div class="col-sm-2" style="background-color: #007bff; border-bottom-left-radius: 10px; border-top-left-radius: 10px;">
-                        <img src="rpt.png" width="50%" style="margin-left: 25%; margin-top: 5vh;">
+                        <img src="https://raw.githubusercontent.com/tej3107/FingrtipsHealth/main/public/rpt.png" width="50%" style="margin-left: 25%; margin-top: 5vh;">
                     </div>
                     <div class="col-sm-6" style="padding-bottom: 7vh;">
                         <h2 style="padding: 40px 0px 20px 20px;">Personal Details</h2>
-                        <!-- <p>Information that you provide is anonymous and not shared with anyone.</p> -->
                         <div class="row" style="font-size: 15px; border-radius: 20px; border: 3px solid #777; margin: 0px 10vh 0 1vh; padding: 10px;">
-                            <div class="col-sm-4 ">
+                            <div class="col-sm-4">
                                 <div class="" style="text-align: right;"><strong>Name:</strong><br></div>
                                 <div class="" style="text-align: right;"><strong>Age:</strong><br></div>
                                 <div class="" style="text-align: right;"><strong>DOB:</strong><br></div>
@@ -205,18 +203,100 @@
                     </div>
                     </div>
                 </div>
-
-                <% if(recommend(perc[0],data2)){%>
+                
+                <!-- --------------------------------------------------------------------------------- -->
+                <!-- Red Alert area for the purpose of Department Input -->
+                <%if(recommend(perc[0],data2)){%>
                     <div style="border-radius:10px; margin: 30px auto 0px auto; background-color: #bf1128; width: 100%; padding: 30px 30px 30px 30px;">
                         <div>
                             <h3 style="margin-bottom: 30px; color: white;">Recommendation</h3>
-                            <p style="font-size: 18px; color: white;">Based on your health, symptoms and lifestyle you are advised to visit a doctor as soon as possible.</p>
-                            <hr>
+                            <p style="font-size: 18px; color: white;">Based on your health it is advised to book appointment to the respective Department by Cliking Below</p>
+                            <hr style="border: 0.5px solid #ccc;">
+
+                            <div style="color: white; margin-top: 30px;">
+                                
+                                <div style="margin-left: 30px;">
+                                        <span style="font-size: 20px;"><strong><%= department[index0] %></strong></span>
+                                        <% if(bookcheck(book1)){ %>
+                                            <div>
+                                                <form action="/slot/<%=id%>/<%= department[index0] %>">
+                                                    <button class="btn btn-outline-light" style="margin-left: 30px; margin-top: 8px;">Book Slot</button>
+                                                </form>
+                                            </div>
+                                        <% }else{ %>
+                                            <p style="color: #ccc; font-size: 18px; padding-left: 20px;">You appointment has been booked for <strong> <%=book1%> </strong> today.</p>
+                                        <% } %>
+                                </div>
+                            
+                                <!-- <hr style="border: 0.5px solid #ccc;"> -->
+                                <% if(recommend(perc[1],data2)){ %>
+                                <div style="margin-left: 30px; margin-top: 25px;">
+                                        <span style="font-size: 20px;"><strong><%=department[index1]%></strong></span>
+                                        <% if(bookcheck(book2)){ %>
+                                            <div>
+                                                <form action="/slot/<%=id%>/<%= department[index1] %>">
+                                                    <button class="btn btn-outline-light" style="margin-left: 30px; margin-top: 8px;">Book Slot</button>
+                                                </form>
+                                            </div>
+                                        <% }else{ %>
+                                            <p style="color: #007bff; font-size: 18px; padding-left: 20px;">You appointment has been booked for <strong> <%=book2%> </strong> today.</p>
+                                        <%}%>
+                                </div>
+                                <% } %>
+                                
+                            </div>
+
                         </div>
                     </div>
-                <%}%>
+                <% }else{ %>
 
-                <div style="border-radius:10px; margin: 30px auto 0px auto; background-color: white; width: 100%; padding: 40px 30px 30px 30px;">
+                    <!-- --------------------------------------------------------------------------------- -->
+                    <!-- Data showing just to visit our general Physician -->
+                    <div style="border-radius:10px; margin: 30px auto 0px auto; background-color: #fcf951; width: 100%; padding: 30px 30px 30px 30px;">
+                        <div>
+                            <h3 style="margin-bottom: 30px; color: #007bff;">Recommendation</h3>
+                            <p style="font-size: 18px; color: #007bff;">Given data about your symptoms are not sufficient
+                                to predict your disease, you are First advised to book appointment with our General Physician.</p>
+                            <%if(bookcheck(bookphy)){%>
+                                <div>
+                                    <form action="/slot/<%=id%>/<%=department[41]%>">
+                                        <button class="btn btn-success" style="margin-left: 30px;">Book Slot</button>
+                                    </form>
+                                </div>
+                            <%}else{%>
+                                <p style="color: #777; font-size: 18px; padding-left: 20px;">You appointment has been booked for <strong> <%=bookphy%> </strong> today.</p>
+                            <%}%>
+                            <hr style="border: 0.5px solid #ccc;">
+                        </div>
+                    </div>
+                <% } %>
+
+
+                <!-- --------------------------------------------------------------------------------- -->
+                <!-- Model 2 implemented Here -->
+                <% if( data2 > 0.4 ){%>
+                    <div style="border-radius:10px; margin: 30px auto 0px auto; background-color: white; width: 100%; padding: 30px 30px 30px 30px;">
+                        <div>
+                            <h3 style="margin-bottom: 30px;">Health CheckUp</h3>
+                            <p>Based on your Lifestyle Data you are also advised to take a visit to our physical Trainer.</p>
+                            <%if(bookcheck(booktrain)){%>
+                                <div>
+                                    <form action="/slot/<%=id%>/<%=department[42]%>">
+                                        <button class="btn btn-primary" style="margin-left: 30px;">Book Slot</button>
+                                    </form>
+                                </div>
+                            <%}else{%>
+                                <p style="color: #007bff; font-size: 18px; padding-left: 20px;">You appointment has been booked for <strong> <%=booktrain%> </strong> today.</p>
+                            <%}%>
+                            <hr style="border: 0.5px solid #ccc;">
+                        </div>
+                    </div>
+                <% } %>
+
+
+                <!-- --------------------------------------------------------------------------------- -->
+                <!-- Pie Charts are shown Here -->
+                <div style="border-radius:10px; margin: 30px auto 30px auto; background-color: white; width: 100%; padding: 40px 30px 30px 30px;">
                     <div>
                         <h3 style="margin-bottom: 30px;">Results</h3>
                         <p style="font-size: 18px; color: #777;">Please note that the list may not be complete and is provided solely for the purpose of a <strong>preliminary diagnosis</strong> and is not a qualified medical opinion.</p>
@@ -226,7 +306,7 @@
                         <div class="row">
                         <div class="col-sm-2">
                         <div class="progress" style="width: 100%;height: 10px;">
-                            <div class="progress-bar" id="barn" style="float:left; width: <%= perc[0] %>%;" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" id="barn" style="float:left; width:<%= perc[0] %>%;" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                           <div class="col-sm-10"><div style="color:#007bff"><%=result[0]%><br></div>
@@ -249,6 +329,7 @@
                         </div>
                         </div>
                         <hr>
+                        <% if(recommend(perc[0],data2)){%>
                           <div class="row">
                               <div class="col-sm-2">
                           <div class="progress" style="width: 100%;height: 10px;">
@@ -287,11 +368,14 @@
                           </div>
                         </div>
                 </div>
+                <%}%>
                     </div>
                 
                 </div>
+
+                <% if(recommend(perc[0],data2)){ %>
                 
-                <div style="border-radius:10px; margin: 30px auto 50px auto; background-color: white; width: 100%; padding: 40px 30px 40px 30px;">
+                <div style="border-radius:10px; margin: 10px auto 50px auto; background-color: white; width: 100%; padding: 40px 30px 40px 30px;">
                     <div>
                         <h3 style="margin-bottom: 30px;">Lab Tests</h3>
                         <h5 style="font-size: 18px; color: #666;">Preventive</h5>
@@ -310,6 +394,7 @@
                         </div>
                     </div>
                 </div>
+                <%}%>
     
             </div>
             

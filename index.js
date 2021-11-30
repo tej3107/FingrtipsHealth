@@ -10,12 +10,12 @@ app.use(exp.static('public'));
 // ================================================================================================
 
 var department = ['Otolaryngologist','Immunologists','Dermatologist','Hepatologist','Allergist','Rheumatologist','Pulmonologist',
-'Orthopaedists','Infectious disease specialist','Hepatologist','General physician','General physician','Endocrinologist',
+'Orthopaedists','Infectious disease specialist','Hepatologist','General Physician','General Physician','Endocrinologist',
 'Gastroenterologist','Allergist','Infectious disease specialist','Otolaryngologist','Gastroenterologist','Cardiologist','Hepatologist',
-'Hepatologist','Hepatologist','Hepatologist','General practitioner','Endocrinologist','Endocrinologist',
-'Endocrinologist','General practitioner','Gastroenterologist','Infectious disease specialist','General practitioner',
+'Hepatologist','Hepatologist','Hepatologist','General Physician','Endocrinologist','Endocrinologist',
+'Endocrinologist','General Physician','Gastroenterologist','Infectious disease specialist','General Physician',
 'Orthopaedician','Neurologist','Gastroenterologist','Pulmonologist','Dermatologist','Infectious disease specialist',
-'General practitioner','Urologist','Cardiologist','Hepatologist','General Physician','Physical Trainer'
+'General Physician','Urologist','Cardiologist','Hepatologist','General Physician','Physical Trainer'
 ];
 
 // ================================================================================================
@@ -80,6 +80,7 @@ var AppointmentSchema = new mongoose.Schema({
 var Appoint = mongoose.model('appoint',AppointmentSchema);
 
 p = [];
+i=0;
 department.forEach(element => {
     y = p.find((x)=>x===element);
     if(y){}
@@ -88,6 +89,8 @@ department.forEach(element => {
         Appoint.find({Deprt:""+ element},(err,f)=>{
             if(f.length!==0){}
             else{
+                console.log(i);
+                i+=1;
                 Appoint.create({Deprt:element},()=>{});
             }
         })
@@ -348,14 +351,18 @@ app.post('/slot/:id/:deprt',(req,res)=>{
             })
         });
     });
+    res.redirect('/res/'+req.params.id);
+})
+
+app.get('/res/:id',(req,res)=>{
     res.redirect('/results/'+req.params.id);
 })
 
 app.get('/slot/:id/:deprt',(req,res)=>{
     // Appoint.find({},(e,f)=>{console.log(f);})
-    console.log(req.params.deprt);
+    // console.log(req.params.deprt);
     Appoint.findOne({Deprt:req.params.deprt},function(err,f){
-        console.log(f);
+        // console.log(f);
         if(f){
             res.render('slot.ejs',{id:req.params.id,deprt:req.params.deprt,slot:f.slot});
         }
@@ -367,47 +374,3 @@ app.listen(process.env.PORT||3000,process.env.IP,()=>{
     console.log("Server");
 })
 
-
-
-
-// var department = ['Otolaryngologist',
-// 'Immunologists',
-// 'Dermatologist',
-// 'Hepatologist',
-// 'Allergist',
-// 'Rheumatologist',
-// 'Pulmonologist',
-// 'Orthopaedists',
-// 'Infectious disease specialist',
-// 'Hepatologist',
-// 'General physician',
-// 'General physician',
-// 'Endocrinologist',
-// 'Gastroenterologist',
-// 'Allergist',
-// 'Infectious disease specialist',
-// 'Otolaryngologist',
-// 'Gastroenterologist',
-// 'Cardiologist',
-// 'Hepatologist',
-// 'Hepatologist',
-// 'Hepatologist',
-// 'Hepatologist',
-// 'General practitioner',
-// 'Endocrinologist',
-// 'Endocrinologist',
-// 'Endocrinologist',
-// 'General practitioner',
-// 'Gastroenterologist',
-// 'Infectious disease specialist',
-// 'General practitioner',
-// 'Orthopaedician',
-// 'Neurologist',
-// 'Gastroenterologist',
-// 'Pulmonologist',
-// 'Dermatologist',
-// 'Infectious disease specialist',
-// 'General practitioner',
-// 'Urologist',
-// 'Cardiologist',
-// 'Hepatologist'];

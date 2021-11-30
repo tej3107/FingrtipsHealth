@@ -221,12 +221,12 @@
                     <div style="border-radius:10px; margin: 30px auto 0px auto; background-color: #bf1128; width: 100%; padding: 30px 30px 30px 30px;">
                         <div>
                             <h3 style="margin-bottom: 30px; color: white;">Recommendation</h3>
-                            <p style="font-size: 18px; color: white;">Based on your health it is advised to book appointment in the following Department by Cliking Below</p>
+                            <p style="font-size: 18px; color: white;">Based on your health it is highly advised to book an appointment to the respective Specialist by Cliking below.</p>
                             <hr style="border: 0.5px solid #ccc;">
 
                             <div style="color: white; margin-top: 30px;">
                                 
-                                <div style="margin-left: 30px;">
+                                <div style="margin-left: 10px;">
                                         <span style="font-size: 20px;"><strong><%= department[index0] %></strong></span>
                                         <% if(bookcheck(book1)){ %>
                                             <div>
@@ -235,7 +235,7 @@
                                                 </form>
                                             </div>
                                         <% }else{ %>
-                                            <p style="color: #ccc; font-size: 18px; padding-left: 20px;">You appointment has been booked for <strong> <%=book1%> </strong> today.</p>
+                                            <p style="color: #ccc; font-size: 18px; padding-left: 20px;">Your appointment has been booked for <strong> <%=book1%> </strong> today.</p>
                                         <% } %>
                                 </div>
                             
@@ -250,7 +250,7 @@
                                                 </form>
                                             </div>
                                         <% }else{ %>
-                                            <p style="color: #007bff; font-size: 18px; padding-left: 20px;">You appointment has been booked for <strong> <%=book2%> </strong> today.</p>
+                                            <p style="color: #007bff; font-size: 18px; padding-left: 20px;">Your appointment has been booked for <strong> <%=book2%> </strong> today.</p>
                                         <%}%>
                                 </div>
                                 <% } %>
@@ -263,21 +263,21 @@
 
                     <!-- --------------------------------------------------------------------------------- -->
                     <!-- Data showing just to visit our general Physician -->
-                    <div style="border-radius:10px; margin: 30px auto 0px auto; background-color: #fcf951; width: 100%; padding: 30px 30px 30px 30px;">
+                    <div style="border-radius:10px; margin: 30px auto 0px auto; background-color: #146bad; width: 100%; padding: 30px 30px 30px 30px;">
                         <div>
-                            <h3 style="margin-bottom: 30px; color: #007bff;">Recommendation</h3>
-                            <p style="font-size: 18px; color: #007bff;">Given data about your symptoms are not sufficient
-                                to predict your disease, you are first advised to book appointment with our General Physician.</p>
+                            <h3 style="margin-bottom: 30px; color: #ffffff;">Recommendation</h3>
+                            <p style="font-size: 18px; color: #ffffff;">Given data about your symptoms are not sufficient
+                                to predict your disease, you are first advised to book appointment with our <strong>General Physician</strong>.</p>
                             <%if(bookcheck(bookphy)){%>
                                 <div>
                                     <form action="/slot/<%=id%>/<%=department[41]%>">
-                                        <button class="btn btn-success" style="margin-left: 30px;">Book Slot</button>
+                                        <button class="btn btn-light" style="margin-left: 30px;">Book Slot</button>
                                     </form>
                                 </div>
                             <%}else{%>
-                                <p style="color: #777; font-size: 18px; padding-left: 20px;">You appointment has been booked for <strong> <%=bookphy%> </strong> today.</p>
+                                <p style="color: rgb(255, 255, 255);  font-size: 18px; padding-left:20px;">Your appointment has been booked for <strong> <%=bookphy%> </strong> today.</p>
                             <%}%>
-                            <hr style="border: 0.5px solid #ccc;">
+                            <hr style="border: 0.5px solid white;">
                         </div>
                     </div>
                 <% } %>
@@ -289,7 +289,7 @@
                     <div style="border-radius:10px; margin: 30px auto 0px auto; background-color: white; width: 100%; padding: 30px 30px 30px 30px;">
                         <div>
                             <h3 style="margin-bottom: 30px;">Health CheckUp</h3>
-                            <p>Based on your Lifestyle Data you are also advised to take a visit to our physical Trainer.</p>
+                            <p>Based on your Lifestyle Data you are also advised to take a visit to our <strong>Physical Trainer</strong>.</p>
                             <%if(bookcheck(booktrain)){%>
                                 <div>
                                     <form action="/slot/<%=id%>/<%=department[42]%>">
@@ -297,7 +297,7 @@
                                     </form>
                                 </div>
                             <%}else{%>
-                                <p style="color: #007bff; font-size: 18px; padding-left: 20px;">You appointment has been booked for <strong> <%=booktrain%> </strong> today.</p>
+                                <p style="color: #007bff; font-size: 18px; padding-left:20px;">Your appointment has been booked for <strong> <%=booktrain%> </strong> today.</p>
                             <%}%>
                             <hr style="border: 0.5px solid #ccc;">
                         </div>

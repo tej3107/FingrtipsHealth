@@ -1,0 +1,21 @@
+<%-include("partials/extras/header")%>
+</head>
+
+<body style="background-color: #eee;">
+    <%-include("partials/extras/nav")%> 
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1" style="border: 0px solid black; margin: 0px auto 0px auto;"></div>
+            <div class="col-lg-2" style="border: 0px solid black; margin: 0px auto 0px auto;" id="basicd1"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-7 justify-content-center"style="border-radius:10px; margin: 50px auto; background-color: white; width: 40%;" id="p1">
+                <% if(patient.length>0){
+                    patient.forEach(ele=>{ %>
+                    <div><%=ele%></div>
+                <%})}%>
+            </div>
+            
+            <div class="col-md-2" style="border: 0px solid black; margin: 50px auto;"></div>
+        </div>
+      </div>
+</body>

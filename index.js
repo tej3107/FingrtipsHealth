@@ -20,8 +20,8 @@ var department = ['Otolaryngologist','Immunologists','Dermatologist','Hepatologi
 
 // ================================================================================================
 
-mongoose.connect('mongodb+srv://tej:tej@cluster0.uxnrl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
-// mongoose.connect('mongodb://localhost:27017/user',{
+// mongoose.connect('mongodb+srv://tej:tej@cluster0.uxnrl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+mongoose.connect('mongodb://localhost:27017/user',{
     useNewUrlParser:true,
     useUnifiedTopology:true
 })
@@ -53,7 +53,10 @@ var UserSchema = new mongoose.Schema({
     book1:String,
     book2:String,
     bookphy:String,
-    booktrain:String
+    booktrain:String,
+    data:[{type:String}],
+    perc:[{type:String}],
+    ab:[{type:Number}]
 });
 var User = mongoose.model("User",UserSchema);
 
@@ -303,12 +306,30 @@ app.post("/results/:id",(req,res)=>{
     data2 = req.body.new;
     // console.log(data2);
 
-    // console.log(req.body);
+    console.log(data, 'data');
+    console.log(perc,'perc');
+    console.log(ab,'ab');
 
     // console.log(name,age,email,sex,hgt,wgt,temp,dob,smoke,alcohol,physc,bmi);
     // console.log(ubp,lbp,gul,chol);
 
-    res.redirect('/results/'+req.params.id);
+    User.findById(req.params.id,function(err,f){
+        if(f){
+            f.data = [];f.book1='';f.book2='';
+            f.perc = [];f.bookphy='';f.booktrain='';
+            f.ab = [];
+            f.data.push(data[0]);f.data.push(data[1]);f.data.push(data[2]);
+            f.data.push(data[3]);f.data.push(data[4]);
+            f.perc.push(parseFloat(perc[0]));f.perc.push(parseFloat(perc[1]));
+            f.perc.push(parseFloat(perc[2]));f.perc.push(parseFloat(perc[3]));
+            f.perc.push(parseFloat(perc[4]));
+            f.ab.push(parseInt(ab[0]));f.ab.push(parseInt(ab[1]));
+            f.save(()=>{});
+        }
+    })
+
+
+    res.redirect('/res/'+req.params.id);
 })
 
 
@@ -317,7 +338,7 @@ app.get('/results/:id',(req,res)=>{
     User.findById(req.params.id,function(err,found){
         if(found){
             res.render("result",{name:found.name,age:found.age,dob:found.dob,email:found.email,sex:found.sex,bmi:found.bmi,
-                result:data,perc:perc,ab:ab,data2:data2,book1:found.book1,book2:found.book2,bookphy:found.bookphy,booktrain:found.booktrain,
+                result:found.data,perc:found.perc,ab:found.ab,data2:data2,book1:found.book1,book2:found.book2,bookphy:found.bookphy,booktrain:found.booktrain,
                 id:req.params.id    
             });
         }
@@ -374,3 +395,18 @@ app.listen(process.env.PORT||3000,process.env.IP,()=>{
     console.log("Server");
 })
 
+// ====================================================================================================
+
+// Place for hospital Management System
+
+app.get('/hms',(req,res)=>{
+    patients = [];
+    User.find({},(e,f1)=>{
+        f1.forEach(f=>{
+            patients.push(f.name);
+            console.log(patients);
+            // console.log(f.name);
+        })
+        res.render('hms.ejs',{patient:patients});
+    })
+})

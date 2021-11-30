@@ -20,8 +20,8 @@ var department = ['Otolaryngologist','Immunologists','Dermatologist','Hepatologi
 
 // ================================================================================================
 
-// mongoose.connect('mongodb+srv://tej:tej@cluster0.uxnrl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
-mongoose.connect('mongodb://localhost:27017/user',{
+mongoose.connect('mongodb+srv://tej:tej@cluster0.uxnrl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+// mongoose.connect('mongodb://localhost:27017/user',{
     useNewUrlParser:true,
     useUnifiedTopology:true
 })
